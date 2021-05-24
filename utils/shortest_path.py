@@ -6,10 +6,8 @@ import numpy as np
 import networkx as nx
 import scipy
 
-from typing import List
 
-
-def sum_all_pair_shortest_path_length_adjacency_matrix(g: nx.Graph) -> int:
+def sum_all_pair_shortest_path_length_adjacency_matrix(g):
     """ Computes the sum of shortest path length over all the pairs of nodes in g
 
     Args:
@@ -36,7 +34,7 @@ def sum_all_pair_shortest_path_length_adjacency_matrix(g: nx.Graph) -> int:
     return total_sp
 
 
-def all_pair_shortest_path_length_adjacency_matrix(g: nx.Graph, tor_list: List = None) -> np.array:
+def all_pair_shortest_path_length_adjacency_matrix(g, tor_list=None):
     """ Returns the length of the shortest path between all pairs of ToRs
 
         Args:

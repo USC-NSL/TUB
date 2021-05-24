@@ -8,10 +8,9 @@ import numpy as np
 
 from networkx import nx
 from utils import shortest_path
-from typing import List, Dict, Tuple
 
 
-def get_longest_matching_traffic_matrix(topology: nx.Graph, tor_list: List, demand_dict: Dict) -> Tuple[Dict, int]:
+def get_longest_matching_traffic_matrix(topology, tor_list, demand_dict):
     """ Generates maximal permutation traffic matrix that results in near worst-case throughput
 
             This is a generalization to: Measuring and Understanding Throughput of Network Topologies
