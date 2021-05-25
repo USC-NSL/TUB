@@ -22,7 +22,7 @@ def sum_all_pair_shortest_path_length_adjacency_matrix(g):
     B = np.eye(num_node, order='F', dtype=np.float32)
     total_sp = num_node * (num_node - 1) - num_node
     C = np.zeros(np.shape(A), order='F', dtype=np.float32)
-    for k in range(num_node - 1):
+    for _ in range(num_node - 1):
         B = scipy.linalg.blas.sgemm(1, B, A)
         C = np.add(C, B)
         num = np.count_nonzero(C == 0)
@@ -52,7 +52,7 @@ def all_pair_shortest_path_length_adjacency_matrix(g, tor_list=None):
     C = np.eye(num_node, order='F', dtype=np.float32)
     shortest_path_np_array = np.ones(np.shape(A), order='F', dtype=np.float32)
 
-    for k in range(num_node - 1):
+    for _ in range(num_node - 1):
         B = scipy.linalg.blas.sgemm(1, B, A)
         C = np.add(C, B)
         if np.count_nonzero(C == 0) == 0:

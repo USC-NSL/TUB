@@ -6,7 +6,6 @@ import gc
 import igraph
 import numpy as np
 
-from networkx import nx
 from utils import shortest_path
 
 
@@ -43,7 +42,7 @@ def get_longest_matching_traffic_matrix(topology, tor_list, demand_dict):
     s = np.array(list(demand_dict.values()), order='F', dtype=np.uint16) * \
         (np.ones((num_nodes, num_nodes), order='F', dtype=np.uint16) - np.eye(num_nodes, order='F', dtype=np.uint16))
     minimum = np.min(np.array(list(demand_dict.values())))
-    coefficient = np.minimum(s, np.transpose(s))/minimum
+    coefficient = np.minimum(s, np.transpose(s)) / minimum
     weights = np.reshape(np.multiply(np_shortest_path, coefficient, dtype=np.float32, order='F'),
                          (1, num_nodes * num_nodes), order='F').tolist()[0]
     del s
