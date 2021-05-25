@@ -24,7 +24,6 @@ def sum_all_pair_shortest_path_length_adjacency_matrix(g):
     C = np.zeros(np.shape(A), order='F', dtype=np.float32)
     for k in range(num_node - 1):
         B = scipy.linalg.blas.sgemm(1, B, A)
-        # B = np.matmul(B, A)
         C = np.add(C, B)
         num = np.count_nonzero(C == 0)
         if num == 0:

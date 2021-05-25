@@ -41,9 +41,9 @@ class Topology(object):
         return shortest_path.all_pair_shortest_path_length_adjacency_matrix(self.get_topology(), tor_list)
 
     def get_near_worst_case_traffic_matrix(self):
-        return near_wc_tm.get_longest_matching_traffic_matrix_igraph_implementation(self.get_topology(),
-                                                                                    self.get_tor_list(),
-                                                                                    self.get_demand_dict())
+        return near_wc_tm.get_longest_matching_traffic_matrix(self.get_topology(),
+                                                              self.get_tor_list(),
+                                                              self.get_demand_dict())
 
     def get_tub(self):
         return tub.get_throughput_upper_bound(self.get_topology(), self.get_tor_list(), self.get_demand_dict())

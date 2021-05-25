@@ -8,7 +8,7 @@ import pickle
 
 
 def get_model(filename):
-    print("** Loading Topology...")
+    print("** Loading Model...")
     with open(filename, "rb") as file:
         if sys.version_info >= (3, 0):
             model = pickle.load(file, encoding="latin1")
@@ -23,6 +23,7 @@ def delete_file(file_path):
 
 
 def store_model(model, file_path):
+    print("** Storing Model...")
     delete_file(file_path)
     with open(file_path, "wb") as f:
         pickle.dump(model, f)

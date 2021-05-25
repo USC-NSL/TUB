@@ -13,19 +13,20 @@ from utils import shortest_path
 def get_longest_matching_traffic_matrix(topology, tor_list, demand_dict):
     """ Generates maximal permutation traffic matrix that results in near worst-case throughput
 
-            This is a generalization to: Measuring and Understanding Throughput of Network Topologies
-            (Sangeetha Abdu Jyothi, Ankit Singla, P. Brighten Godfrey, Alexandra Kolla), 2016
+    This is a generalization to: Measuring and Understanding Throughput of Network Topologies
+    (Sangeetha Abdu Jyothi, Ankit Singla, P. Brighten Godfrey, Alexandra Kolla), 2016
 
-            Args:
-                topology: a networkx graph representing switch connections
-                tor_list: contains list of switches with directly connected servers
-                demand_dict: a mapping from each ToR to its number of directly connected servers
-            Returns:
-                traffic_matrix: a dictionary (src, dst) --> amount of traffic
-                sum_weight_matching: sum shortest_path_length(src, dst) * traffic_matrix(src, dst) over all pairs
-                                     traffic_matrix
+    Args:
+        topology: a networkx graph representing switch connections
+        tor_list: contains list of switches with directly connected servers
+        demand_dict: a mapping from each ToR to its number of directly connected servers
+    Returns:
+        traffic_matrix: a dictionary (src, dst) --> amount of traffic
+        sum_weight_matching: sum shortest_path_length(src, dst) * traffic_matrix(src, dst) over all pairs
+                             traffic_matrix
     """
 
+    # Line 30-36 makes sure the order of ToRs in the tor_list is the same as their order in the topology.nodes().
     initial_tor_list = list(tor_list)
     num_nodes = len(tor_list)
     tor_list = list()
@@ -49,7 +50,6 @@ def get_longest_matching_traffic_matrix(topology, tor_list, demand_dict):
     del coefficient
     del minimum
     gc.collect()
-    # bi_graph.es["weights"] = weights
 
     print("**** Computing maximum weighted matching...")
     maximal_matching = bi_graph.maximum_bipartite_matching(weights=weights, eps=0.001)
